@@ -15,6 +15,8 @@ function App() {
 
   const [board, setBoard] = useState(boardGuess)
   const [todaysWord, setTodaysWord] = useState('MOURN')
+  const [currWordGuess, setCurrWordGuess] = useState('')
+  const [guessNumber, setGuessNumber] = useState(0)
 
   // useEffect(() => {
   //   let randomIdx = Math.floor(Math.random() * words.length)
@@ -23,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      <AppContext.Provider value={{ board, setBoard, todaysWord }}>
+      <AppContext.Provider value={{ board, setBoard, todaysWord, currWordGuess, setCurrWordGuess, guessNumber, setGuessNumber }}>
         <Header />
         <Board />
         <Keyboard />

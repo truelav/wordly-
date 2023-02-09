@@ -14,7 +14,7 @@ const Keyboard = () => {
     return (
         <div className="Keyboard">
             {keyboardRows.map((keysRow, idx) => {
-                return <KeyboardRow key={idx} keysRow={keysRow} />
+                return <KeyboardRow key={idx} keysRow={keysRow} idx={idx} />
             })}
         </div>
     )

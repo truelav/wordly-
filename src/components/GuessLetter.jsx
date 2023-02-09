@@ -2,8 +2,10 @@ const GuessLetter = ({ letter }) => {
 
     return (
         <div className="GuessLetter">
-            <div className="letterContainer">
+            <p>
                 {letter}
+            </p>
+            <div className="letterContainer">
             </div>
         </div>
     )
