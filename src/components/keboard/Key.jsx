@@ -1,4 +1,4 @@
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 
 import { AppContext } from "../../App"
 
@@ -10,10 +10,28 @@ const Key = ({ keyLetter, id }) => {
 
     }
 
-    const handleKeyClick = (val) => {
-        console.log(currWordGuess)
-        //first we need to check if (Enter) was clicked
+    // useEffect(() => {
+    // })
 
+    const handleKeyClick = (val) => {
+
+        if (keyLetter === 'enter') {
+            console.log('ENTER was clicked')
+            if (currWordGuess.length >= 5) {
+                // check for the matching letters or word 
+                // and then check for guessNumber
+                //update colors and guess Number
+
+                setGuessNumber(guessNumber + 1)
+                setCurrWordGuess('')
+
+                console.log(currWordGuess, guessNumber)
+            } else {
+                return
+            }
+        }
+
+        if (currWordGuess.length === 5) return
 
         setCurrWordGuess(currWordGuess + keyLetter)
         updateBoard(board)
@@ -24,8 +42,11 @@ const Key = ({ keyLetter, id }) => {
         const curLetterIdx = curBoard[guessNumber].findIndex(l => l === null)
         const newBoard = curBoard
         newBoard[guessNumber][curLetterIdx] = keyLetter
-        console.log(newBoard, guessNumber, curLetterIdx)
         setBoard(newBoard)
+    }
+
+    const checkWordAndLetters = () => {
+
     }
 
     return (
