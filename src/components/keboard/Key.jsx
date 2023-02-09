@@ -1,10 +1,8 @@
-const Key = () => {
+const Key = ({ keyLetter }) => {
 
     return (
         <div className="Key">
-            <h2>
-                Key Component
-            </h2>
+            <p>{keyLetter}</p>
         </div>
     )
 }

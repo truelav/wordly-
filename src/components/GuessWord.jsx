@@ -1,10 +1,12 @@
-const GuessWord = () => {
+import GuessLetter from "./GuessLetter"
+
+const GuessWord = ({ word }) => {
 
     return (
         <div className="GuessWord">
-            <h2>
-                GuessWord Component
-            </h2>
+            {word.map((letter, idx) => {
+                return <GuessLetter key={idx} letter={letter} />
+            })}
         </div>
     )
 }
