@@ -4,7 +4,7 @@ import { AppContext } from "../../App"
 
 const Key = ({ keyLetter, id }) => {
 
-    const { board, setBoard, todaysWord, currWordGuess, setCurrWordGuess, guessNumber, setGuessNumber } = useContext(AppContext)
+    const { board, setBoard, todaysWord, checkGameEnd, checkLetters, currWordGuess, setCurrWordGuess, guessNumber, setGuessNumber, isGuessSubmited, setIsGuessSubmited } = useContext(AppContext)
 
     const handleEnter = () => {
 
@@ -16,12 +16,12 @@ const Key = ({ keyLetter, id }) => {
     const handleKeyClick = (val) => {
 
         if (keyLetter === 'enter') {
-            console.log('ENTER was clicked')
-            if (currWordGuess.length >= 5) {
-                // check for the matching letters or word 
-                // and then check for guessNumber
-                //update colors and guess Number
 
+            if (currWordGuess.length >= 5) {
+
+                //
+                // checkGameEnd()
+                checkLetters()
                 setGuessNumber(guessNumber + 1)
                 setCurrWordGuess('')
 
@@ -45,9 +45,9 @@ const Key = ({ keyLetter, id }) => {
         setBoard(newBoard)
     }
 
-    const checkWordAndLetters = () => {
 
-    }
+
+
 
     return (
         <div className="Key" id={id} onClick={handleKeyClick}>

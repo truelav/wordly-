@@ -6,6 +6,15 @@ export const boardGuess = [
     [null, null, null, null, null]
 ]
 
+// export const boardGuess = [
+//     [[null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray']],
+//     [[null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray']],
+//     [[null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray']],
+//     [[null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray']],
+//     [[null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray']]
+// ]
+
+
 export const keyboardLetters = [
     ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
     ["a", "s", "d", "f", "g", "h", "j", "k", "l"],

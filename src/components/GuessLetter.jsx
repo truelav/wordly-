@@ -1,12 +1,10 @@
 const GuessLetter = ({ letter }) => {
-
+    const id = ''
     return (
-        <div className="GuessLetter">
+        <div className="GuessLetter" id={''}>
             <p>
                 {letter}
             </p>
-            <div className="letterContainer">
-            </div>
         </div>
     )
 }

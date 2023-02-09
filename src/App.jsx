@@ -14,9 +14,45 @@ const AppContext = createContext()
 function App() {
 
   const [board, setBoard] = useState(boardGuess)
-  const [todaysWord, setTodaysWord] = useState('MOURN')
+  const [todaysWord, setTodaysWord] = useState('MOURN'.toLocaleLowerCase())
   const [currWordGuess, setCurrWordGuess] = useState('')
   const [guessNumber, setGuessNumber] = useState(0)
+  const [isGuessSubmited, setIsGuessSubmited] = useState(false)
+
+
+  const checkLetters = () => {
+    //check currentWordGuess against todaysWord
+    //return yellowBackground indexes and greenBackgroundIndexes
+
+    //   qwert  ||  mourn
+    const word = todaysWord.split('')
+    const guessWord = currWordGuess.split('')
+
+    for (let i = 0; i < guessWord.length; i++) {
+      const letter = guessWord[i]
+      if (word.includes(letter)) {
+        if (word[i] === guessWord[i]) {
+          console.log('We have a green Match')
+
+          const newBoard = board[guessNumber][i][1] = 'greenCell'
+          setBoard(newBoard)
+          //we have found a green match (modify the background then change it to exclamation mark both letters) 
+        } else {
+          console.log('We have a yellow Match')
+        }
+      }
+    }
+  }
+
+  const checkGameEnd = () => {
+    return todaysWord.toLocaleLowerCase() === currWordGuess.toLocaleLowerCase()
+  }
+
+  const modifyBackground = () => {
+
+  }
+
+
 
   // useEffect(() => {
   //   let randomIdx = Math.floor(Math.random() * words.length)
@@ -25,7 +61,11 @@ function App() {
 
   return (
     <div className="App">
-      <AppContext.Provider value={{ board, setBoard, todaysWord, currWordGuess, setCurrWordGuess, guessNumber, setGuessNumber }}>
+      <AppContext.Provider value={{
+        board, setBoard, todaysWord, checkGameEnd, checkLetters,
+        currWordGuess, setCurrWordGuess, guessNumber, setGuessNumber,
+        isGuessSubmited, setIsGuessSubmited
+      }}>
         <Header />
         <Board />
         <Keyboard />
