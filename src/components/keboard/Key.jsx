@@ -4,31 +4,12 @@ import { AppContext } from "../../App"
 
 const Key = ({ keyLetter, id }) => {
 
-    const { board, setBoard, todaysWord, checkGameEnd, checkLetters, currWordGuess, setCurrWordGuess, guessNumber, setGuessNumber, isGuessSubmited, setIsGuessSubmited } = useContext(AppContext)
+    const { board, setBoard, currWordGuess, setCurrWordGuess, handleEnter, guessNumber } = useContext(AppContext)
 
-    const handleEnter = () => {
-
-    }
-
-    // useEffect(() => {
-    // })
-
-    const handleKeyClick = (val) => {
-
+    const handleKeyClick = () => {
         if (keyLetter === 'enter') {
-
-            if (currWordGuess.length >= 5) {
-
-                //
-                // checkGameEnd()
-                checkLetters()
-                setGuessNumber(guessNumber + 1)
-                setCurrWordGuess('')
-
-                console.log(currWordGuess, guessNumber)
-            } else {
-                return
-            }
+            handleEnter()
+            return
         }
 
         if (currWordGuess.length === 5) return
@@ -40,14 +21,10 @@ const Key = ({ keyLetter, id }) => {
 
     const updateBoard = (curBoard) => {
         const curLetterIdx = curBoard[guessNumber].findIndex(l => l === null)
-        const newBoard = curBoard
+        const newBoard = [...curBoard]
         newBoard[guessNumber][curLetterIdx] = keyLetter
         setBoard(newBoard)
     }
-
-
-
-
 
     return (
         <div className="Key" id={id} onClick={handleKeyClick}>

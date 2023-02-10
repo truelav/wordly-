@@ -6,13 +6,13 @@ export const boardGuess = [
     [null, null, null, null, null]
 ]
 
-// export const boardGuess = [
-//     [[null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray']],
-//     [[null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray']],
-//     [[null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray']],
-//     [[null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray']],
-//     [[null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray'], [null, 'gray']]
-// ]
+export const boardIds = [
+    ['', '', '', '', ''],
+    ['', '', '', '', ''],
+    ['', '', '', '', ''],
+    ['', '', '', '', ''],
+    ['', '', '', '', '']
+]
 
 
 export const keyboardLetters = [

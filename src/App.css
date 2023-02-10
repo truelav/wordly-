@@ -82,6 +82,10 @@ p {
   background-color: #5dd457;
 }
 
+#grayCell {
+  background-color: rgb(87, 87, 87);
+}
+
 #bigKey {
   width: 65px;
 }
