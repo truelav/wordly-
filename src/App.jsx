@@ -3,6 +3,7 @@ import { useState, useEffect, useContext, createContext } from 'react'
 import Header from './components/Header'
 import Board from './components/Board'
 import Keyboard from './components/keboard/Keyboard'
+import Footer from './components/Footer'
 
 import { boardGuess, boardIds } from './data/board'
 import { words } from './data/words.json'
@@ -23,13 +24,12 @@ function App() {
 
   const handleEnter = () => {
 
-    if (currWordGuess.length >= 5) {
+    if (currWordGuess.length >= 5 && guessNumber <= 4) {
 
-      // checkGameEnd()
       checkLetters()
+      // checkGameEnd()
       setGuessNumber(guessNumber + 1)
       setCurrWordGuess('')
-
     } else {
       return
     }
@@ -41,28 +41,28 @@ function App() {
     //   qwert  ||  mourn
     const word = todaysWord.split('')
     const guessWord = currWordGuess.split('')
+    // a way to improve performance is to create a copy
+    //of a matrix here and modify and change state at the end
+    const newBoardId = [...boardId]
 
     for (let i = 0; i < guessWord.length; i++) {
 
       const letter = guessWord[i]
       if (word.includes(letter)) {
         if (word[i] === guessWord[i]) {
-
           console.log('We have a green Match')
-          //we have found a green match (modify the background then change it to exclamation mark both letters) 
-          const newBoardId = [...boardId]
           newBoardId[guessNumber][i] = 'greenCell'
-          setBoardId(newBoardId)
 
         } else {
-
           console.log('We have a yellow Match')
-
+          newBoardId[guessNumber][i] = 'yellowCell'
         }
       } else {
-
+        newBoardId[guessNumber][i] = 'grayCell'
       }
     }
+
+    setBoardId(newBoardId)
   }
 
   const checkGameEnd = () => {
@@ -84,6 +84,7 @@ function App() {
         <Header />
         <Board boardId={boardId} />
         <Keyboard />
+        <Footer />
       </AppContext.Provider>
     </div>
   )

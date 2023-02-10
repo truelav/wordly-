@@ -12,6 +12,11 @@ const Key = ({ keyLetter, id }) => {
             return
         }
 
+        if (keyLetter === 'del') {
+            handleDel()
+            return
+        }
+
         if (currWordGuess.length === 5) return
 
         setCurrWordGuess(currWordGuess + keyLetter)
@@ -24,6 +29,11 @@ const Key = ({ keyLetter, id }) => {
         const newBoard = [...curBoard]
         newBoard[guessNumber][curLetterIdx] = keyLetter
         setBoard(newBoard)
+    }
+
+    const handleDel = () => {
+        const newWordGuess = currWordGuess.slice(0, -1)
+        setCurrWordGuess(newWordGuess)
     }
 
     return (

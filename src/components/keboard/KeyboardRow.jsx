@@ -7,7 +7,7 @@ const KeyboardRow = ({ keysRow, idx }) => {
     if (idx === 2) {
         return (
             <div className="KeyboardRow">
-                <Key id={'bigKey'} keyLetter={'backsp'} />
+                <Key id={'bigKey'} keyLetter={'del'} />
                 {keysRow.map((keyLetter, i) => {
                     return <Key key={i} keyLetter={keyLetter} />
                 })}
