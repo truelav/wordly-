@@ -34,6 +34,9 @@ const Key = ({ keyLetter, id }) => {
     const handleDel = () => {
         const newWordGuess = currWordGuess.slice(0, -1)
         setCurrWordGuess(newWordGuess)
+        const newBoard = [...board]
+        newBoard[currWordGuess] = newWordGuess.split('')
+        setBoard(newBoard)
     }
 
     return (
