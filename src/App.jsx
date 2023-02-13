@@ -1,9 +1,12 @@
 import { useState, useEffect, useContext, createContext } from 'react'
+import Modal from "react-modal"
+import ReactDOM from 'react-dom'
 
 import Header from './components/Header'
 import Board from './components/Board'
 import Keyboard from './components/keboard/Keyboard'
 import Footer from './components/Footer'
+import WinnerLooser from './components/WinnerLooser'
 
 import { boardGuess, boardIds } from './data/board'
 import { words } from './data/words.json'
@@ -11,6 +14,7 @@ import { words } from './data/words.json'
 import './App.css'
 
 const AppContext = createContext()
+
 
 function App() {
 
@@ -20,22 +24,21 @@ function App() {
   const [currWordGuess, setCurrWordGuess] = useState('')
   const [guessNumber, setGuessNumber] = useState(0)
   const [isGuessSubmited, setIsGuessSubmited] = useState(false)
+  const [isWinner, setIsWinner] = useState(false)
+  const [isLooser, setIsLooser] = useState(false)
+  const [modalIsOpen, setModalIsOpen] = useState(false)
 
 
   const handleEnter = () => {
-
     if (currWordGuess.length >= 5 && guessNumber <= 4) {
-
       checkLetters()
-      // checkGameEnd()
       setGuessNumber(guessNumber + 1)
       setCurrWordGuess('')
+      checkGameEnd()
     } else {
       return
     }
   }
-
-
 
   const checkLetters = () => {
     //   qwert  ||  mourn
@@ -66,7 +69,15 @@ function App() {
   }
 
   const checkGameEnd = () => {
-    return todaysWord.toLocaleLowerCase() === currWordGuess.toLocaleLowerCase()
+    if (todaysWord.toLocaleLowerCase() === currWordGuess.toLocaleLowerCase()) {
+      setIsWinner(true)
+      return
+    } else if (currWordGuess.length === 5 && guessNumber === 4) {
+      setIsLooser(true)
+      return
+    } else {
+      return
+    }
   }
 
   // useEffect(() => {
@@ -81,10 +92,18 @@ function App() {
         currWordGuess, setCurrWordGuess, guessNumber, setGuessNumber,
         isGuessSubmited, setIsGuessSubmited, handleEnter
       }}>
+        {/* <Modal isOpen={modalIsOpen}> */}
         <Header />
+        <WinnerLooser
+          isWinner={isWinner}
+          isLooser={isLooser}
+          setIsWinner={setIsWinner}
+          setIsLooser={setIsLooser}
+        />
         <Board boardId={boardId} />
         <Keyboard />
         <Footer />
+        {/* </Modal> */}
       </AppContext.Provider>
     </div>
   )
